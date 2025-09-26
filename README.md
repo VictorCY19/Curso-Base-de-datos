@@ -50,7 +50,7 @@ Al finalizar esta guía, serás capaz de:
 ### **Módulo 8: Seguridad en SQL Server**
 - Próximamente
 
-## **Módulo 9: Transacciones y Control de Concurrencia**
+### **Módulo 9: Transacciones y Control de Concurrencia**
 - Próximamente 
 
 ### **Módulo 10: Triggers** 
@@ -132,7 +132,7 @@ El curso culmina con un **proyecto integrador** donde aplicarás todo lo aprendi
 
 ## ⚡ Empezar ahora
 
-**¿Listo para comenzar?** Ve al [Módulo 1: Introducción](./modulo-01-introduccion/README.md)
+**¿Listo para comenzar?** Ve al [Módulo 1: Introducción](./modulo-01-introduccion/Conceptos-Basicos.md)
 
 ---
 
