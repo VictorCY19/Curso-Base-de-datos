@@ -132,7 +132,7 @@ El curso culmina con un **proyecto integrador** donde aplicarás todo lo aprendi
 
 ## ⚡ Empezar ahora
 
-**¿Listo para comenzar?** Ve al [Módulo 1: Introducción](./modulo-01-introduccion/Conceptos-Basicos.md)
+**¿Listo para comenzar?** Ve al [Módulo 1: Introducción](./modulo-01-introduccion/README.md)
 
 ---
 
