@@ -69,7 +69,8 @@ En el siguiente ejemplo puedes ver como agregamos una tabla y le insertamos dato
 
 - Codigo: 
 
--- Crear base de datos
+```sql
+-- Crear base de datos (ejecutar solo una vez)
 CREATE DATABASE CursoDB;
 GO
 
@@ -83,7 +84,7 @@ CREATE TABLE Clientes (
     Nombre NVARCHAR(100) NOT NULL,
     Email NVARCHAR(100),
     FechaRegistro DATETIME DEFAULT GETDATE()
-); 
+);
 GO
 
 -- Insertar registros de prueba
@@ -92,8 +93,8 @@ INSERT INTO Clientes (Nombre, Email) VALUES
 ('María López', 'marialopez@mail.com');
 
 -- Consultar registros
-SELECT * FROM Clientes; 
-
+SELECT * FROM Clientes;
+```
 
 **Con esto concluimos el primer modulo del curso, aprendimos lo que es una base de datos relacional, como instalar y ejecutar nuestro sql server, ademas de como crear y utilizar nuestra propia base de datos**
 
