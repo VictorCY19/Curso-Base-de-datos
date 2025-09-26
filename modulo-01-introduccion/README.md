@@ -128,7 +128,7 @@ SELECT * FROM Clientes;
 
 **¿Listo para continuar?** En el próximo módulo aprenderemos los fundamentos del lenguaje SQL.
 
-📖 **[Ir al Módulo 2: Lenguaje SQL - Fundamentos](../modulo-02-Lenguaje-sql-Fundamentos/README.md)**
+📖 **[Ir al Módulo 2: Lenguaje SQL - Fundamentos](../modulo-02-Lenguaje-SQL-Fundamentos/README.md)**
 
 ---
 
