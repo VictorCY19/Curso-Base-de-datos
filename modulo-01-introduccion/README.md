@@ -96,7 +96,7 @@ INSERT INTO Clientes (Nombre, Email) VALUES
 SELECT * FROM Clientes;
 ```
 
-**Con esto concluimos el primer modulo del curso, aprendimos lo que es una base de datos relacional, como instalar y ejecutar nuestro sql server, ademas de como crear y utilizar nuestra propia base de datos**
+**Con esto concluimos el primer modulo del curso, aprendimos lo que es una base de datos relacional, como instalar y ejecutar nuestro sql server, ademas de como crear y utilizar nuestra propia base de datos.**
 
 
 
