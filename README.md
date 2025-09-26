@@ -1,9 +1,6 @@
 # 🗃️ Guía de Estudio: Bases de Datos SQL - De Principiante a Avanzado
 
 [![Estado del Curso](https://img.shields.io/badge/Estado-En%20Desarrollo-yellow)](https://github.com/VictorCY19/Curso-Base-de-datos)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
-> **Nota importante**: Esta es una guía de estudio autodidacta que creé durante mi propio proceso de aprendizaje. No soy un experto, sino alguien que está documentando su camino para dominar las bases de datos.
 
 ## 🤔 ¿Qué es este proyecto?
 
@@ -22,36 +19,57 @@ Al finalizar esta guía, serás capaz de:
 
 ## 📚 Estructura del Curso
 
-### **Módulo 0: Introducción y Configuración**
-- ¿Por qué aprender bases de datos?
-- Instalación de MySQL, PostgreSQL y herramientas de gestión
-- Primer contacto con el entorno de trabajo
+### **Módulo 1: Introducción**
+- ¿Qué es una base de datos? Conceptos básicos.
+- Tipos de bases de datos: relacionales vs no relacionales (énfasis en relacionales).
+- Instalación y configuración básica de SQL Server y SSMS.
+- Conectarse al servidor, crear una base de datos inicial.
+- Ejercicio: crear la primera base de datos “CursoDB”.
 
-### **Módulo 1: Fundamentos del Diseño**
-- Modelado Entidad-Relación (ER)
-- Normalización (1FN, 2FN, 3FN)
-- Claves primarias y foráneas
+### **Módulo 2: Lenguaje SQL – Fundamentos**
+- Próximamente
 
 ### **Módulo 2: SQL Básico - Creación y Manipulación**
-- DDL (CREATE, ALTER, DROP)
-- DML (INSERT, UPDATE, DELETE)
-- Tipos de datos y restricciones
+- Próximamente 
 
-### **Módulo 3: SQL Intermedio - Consultas Avanzadas**
-- Consultas SELECT complejas
-- JOINs (INNER, LEFT, RIGHT)
-- Funciones de agregación (COUNT, SUM, AVG)
-- GROUP BY y HAVING
+### **Módulo 3: Modelado de Bases de Datos Relacionales**
+- Próximamente 
 
-### **Módulo 4: Temas Avanzados**
-- Índices y optimización
-- Vistas y procedimientos almacenados
-- Transacciones (ACID)
+### **Módulo 4: Consultas SQL Intermedias**
+- Próximamente
 
-### **Módulo 5: Proyecto Final Integrador**
-- Diseño completo de un sistema de gestión
-- Implementación de la base de datos
-- Consultas complejas del mundo real
+### **Módulo 5: Consultas Avanzadas**
+- Próximamente
+
+### **Módulo 6: Vistas, Funciones y Procedimientos**
+- Próximamente
+
+### **Módulo 7: Índices y Rendimiento**
+- Próximamente 
+
+### **Módulo 8: Seguridad en SQL Server**
+- Próximamente
+
+## **Módulo 9: Transacciones y Control de Concurrencia**
+- Próximamente 
+
+### **Módulo 10: Triggers** 
+- Próximamente 
+
+### **Módulo 11: Administración de Bases de Datos** 
+- Próximamente 
+
+### **Módulo 12: Integración y Exportación de Datos**
+- Próximamente 
+
+### **Módulo 13: Reporting y Análisis de Datos**
+- Próximamente 
+
+### **Módulo 14: Buenas Prácticas y Estándares**
+- Próximamente 
+
+### **Módulo 15: Proyecto Final** 
+- Próximamente
 
 ## 🚀 Características clave
 
@@ -114,7 +132,7 @@ El curso culmina con un **proyecto integrador** donde aplicarás todo lo aprendi
 
 ## ⚡ Empezar ahora
 
-**¿Listo para comenzar?** Ve al [Módulo 1: Introducción y Configuración](./modulo-01-introduccion/README.md)
+**¿Listo para comenzar?** Ve al [Módulo 1: Introducción](./modulo-01-introduccion/README.md)
 
 ---
 
