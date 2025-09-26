@@ -27,7 +27,14 @@ Al finalizar esta guía, serás capaz de:
 - Ejercicio: crear la primera base de datos “CursoDB”.
 
 ### **Módulo 2: Lenguaje SQL – Fundamentos**
-- Próximamente
+- Lenguajes en SQL Server
+- Tipos de Datos en SQL Server
+- Crear Tablas con CREATE TABLE
+- Insertar registros con INSERT
+- Consultar registros con SELECT
+- Actualizar registros con UPDATE
+- Eliminar registros con DELETE
+- Ejercicio Practico 
 
 ### **Módulo 2: SQL Básico - Creación y Manipulación**
 - Próximamente 
