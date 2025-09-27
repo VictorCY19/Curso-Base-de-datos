@@ -268,21 +268,9 @@ WHERE c.Nombre = 'Juan Pérez';
 📌 **Resultado esperado**:
 
 ```yaml
-IdFactura: 1
-Fecha: 2025-09-25
-Cliente: Juan Pérez
-Producto: Laptop Lenovo
-Cantidad: 1
-Precio: 2500
-Total: 2500
-
-IdFactura: 1
-Fecha: 2025-09-25
-Cliente: Juan Pérez
-Producto: Mouse Logitech
-Cantidad: 2
-Precio: 80
-Total: 160
+IdFactura | Fecha       | Cliente    | Producto       | Cantidad | Precio | Total
+1         | 2025-09-25  | Juan Pérez | Laptop Lenovo  | 1        | 2500   | 2500
+1         | 2025-09-25  | Juan Pérez | Mouse Logitech | 2        | 80     | 160
 ```
 
 ✅ **Con este capítulo ya puedes**:
