@@ -20,11 +20,11 @@ Al finalizar esta guía, serás capaz de:
 ## 📚 Estructura del Curso
 
 ### **Módulo 1: Introducción**
-- ¿Qué es una base de datos? Conceptos básicos.
-- Tipos de bases de datos: relacionales vs no relacionales (énfasis en relacionales).
-- Instalación y configuración básica de SQL Server y SSMS.
-- Conectarse al servidor, crear una base de datos inicial.
-- Ejercicio: crear la primera base de datos “CursoDB”.
+- ¿Qué es una base de datos? Conceptos básicos
+- Tipos de bases de datos: relacionales vs no relacionales (énfasis en relacionales)
+- Instalación y configuración básica de SQL Server y SSMS
+- Conectarse al servidor, crear una base de datos inicial
+- Ejercicio: crear la primera base de datos “CursoDB”
 
 ### **Módulo 2: Lenguaje SQL – Fundamentos**
 - Lenguajes en SQL Server
@@ -36,14 +36,23 @@ Al finalizar esta guía, serás capaz de:
 - Eliminar registros con DELETE
 - Ejercicio Practico 
 
-### **Módulo 2: SQL Básico - Creación y Manipulación**
-- Próximamente 
-
 ### **Módulo 3: Modelado de Bases de Datos Relacionales**
-- Próximamente 
+- Conceptos de entidades, atributos y relaciones
+- Claves primarias y foráneas
+- Tipos de relaciones
+- Normalización (1FN, 2FN, 3FN)
+- Diagramas entidad-relación en SSMS
+- Ejercicio práctico: Diseñar modelo para un sistema de ventas
 
 ### **Módulo 4: Consultas SQL Intermedias**
-- Próximamente
+- Operadores en WHERE
+- Funciones de texto, matemáticas y de fecha
+- Ordenar resultados con ORDER BY
+- Limitar resultados con TOP
+- Eliminar duplicados con DISTINCT
+- Uso de alias con AS
+- Ejercicios prácticos sobre el sistema de ventas
+- Ejercicios de práctica
 
 ### **Módulo 5: Consultas Avanzadas**
 - Próximamente

@@ -183,6 +183,8 @@ SSMS dibuja automáticamente las relaciones.
 
 ## 6. Ejercicio práctico: Diseñar modelo para un sistema de ventas
 
+⚠️ **Nota importante**: A partir de aqui crearemos una nueva base de datos llamada **SistemaVentasBD** (sigue los mismos pasos del módulo 1) adicional recuerda seleccionar lo que deseas ejecutar antes de darle a `Execute` (ejemplo: seleccionar todo el codigo de la creación de tabla cliente, luego le damos `Execute` y seguimos asi para las demas partes del código)
+
 **Requerimientos**:
 
 Cada Cliente puede realizar varias Facturas.
@@ -284,6 +286,8 @@ Entender tipos de relaciones (1:1, 1:N, N:M).
 Normalizar datos hasta 3FN.
 
 Crear un modelo realista de ventas en SQL Server.
+
+⚠️ **Nota importante**: Como practica puedes crear una base de datos similar (sin el mismo nombre) y empezar a ponerle mas resgistros y experimentando consultas, recuerda que **para aprender es importante practicar**
 
 👉 **Con esto cierras la fase de diseño estructural. A partir del siguiente capítulo (Consultas SQL Intermedias) ya empezarás a explotar datos de tus modelos.**
 
