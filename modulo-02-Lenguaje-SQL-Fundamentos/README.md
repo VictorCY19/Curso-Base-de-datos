@@ -1,4 +1,4 @@
-# 📘 Capítulo 2: Lenguaje SQL – Fundamentos
+# 📘 Módulo 2: Lenguaje SQL – Fundamentos
 
 ## 1. Lenguajes en SQL Server
 
@@ -218,4 +218,4 @@ Prueba diferentes consultas SELECT usando:
 
 **¿Listo para continuar?** En el próximo capítulo aprenderemos sobre consultas avanzadas con WHERE, ORDER BY, y funciones de agregación.
 
-📖 **[Ir al Capítulo 3: Modelado de Base de Datos Relacional](../modulo-03-Modelado-Base-Datos-Relacional/README.md)**
+📖 **[Ir al Capítulo 3: Modelado de Base de Datos Relacional](/modulo-03-Modelado-Base-Datos-Relacional/README.md)**
