@@ -96,11 +96,12 @@ CREATE TABLE FacturaDetalle (
 
 El proceso de organizar datos para eliminar redundancia e inconsistencias.
 
-**1FN (Primera Forma Normal)**:
+### **1FN (Primera Forma Normal)**
 Cada campo debe ser atómico (no dividir en subcampos).
 
-**Ejemplo incorrecto**:
+**❌ Ejemplo incorrecto:**
 ```sql
+-- Columna "Direcciones" con múltiples valores
 CREATE TABLE Clientes (
     IdCliente INT PRIMARY KEY,
     Nombre NVARCHAR(100),
@@ -108,7 +109,7 @@ CREATE TABLE Clientes (
 );
 ```
 
-**Ejemplo correcto**:
+**✅ Ejemplo correcto:**
 ```sql
 CREATE TABLE Clientes (
     IdCliente INT PRIMARY KEY,
@@ -123,15 +124,50 @@ CREATE TABLE Direcciones (
 );
 ```
 
-**2FN (Segunda Forma Normal)**:
+### **2FN (Segunda Forma Normal)**
 Cada atributo depende de la clave primaria.
 
-**Ejemplo incorrecto**: en una tabla FacturaDetalle, guardar también el Nombre del Cliente (no depende de la PK, depende de Factura).
+**❌ Ejemplo incorrecto:**
+```sql
+-- En FacturaDetalle guardar también el Nombre del Cliente
+CREATE TABLE FacturaDetalle (
+    IdFactura INT,
+    IdProducto INT,
+    NombreCliente NVARCHAR(100), -- No depende de la PK
+    PRIMARY KEY (IdFactura, IdProducto)
+);
+```
 
-**3FN (Tercera Forma Normal)**:
+### **3FN (Tercera Forma Normal)**
 No debe haber dependencias transitivas.
 
-**Ejemplo incorrecto**: en Clientes guardar también el Nombre de la Ciudad. Mejor: separar una tabla Ciudades.
+**❌ Ejemplo incorrecto:**
+```sql
+-- En Clientes guardar también el Nombre de la Ciudad
+CREATE TABLE Clientes (
+    IdCliente INT PRIMARY KEY,
+    Nombre NVARCHAR(100),
+    Ciudad NVARCHAR(50), -- Depende transitivamente
+    Pais NVARCHAR(50)
+);
+```
+
+**✅ Ejemplo correcto:**
+```sql
+CREATE TABLE Ciudades (
+    IdCiudad INT PRIMARY KEY,
+    Nombre NVARCHAR(50),
+    IdPais INT
+);
+
+CREATE TABLE Clientes (
+    IdCliente INT PRIMARY KEY,
+    Nombre NVARCHAR(100),
+    IdCiudad INT,
+    FOREIGN KEY (IdCiudad) REFERENCES Ciudades(IdCiudad)
+);
+```
+
 
 ## 5. Diagramas entidad-relación en SSMS
 
