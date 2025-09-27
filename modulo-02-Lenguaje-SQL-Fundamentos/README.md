@@ -218,4 +218,6 @@ Prueba diferentes consultas SELECT usando:
 
 **¿Listo para continuar?** En el próximo capítulo aprenderemos sobre consultas avanzadas con WHERE, ORDER BY, y funciones de agregación.
 
-📖 **[Ir al Capítulo 3: Modelado de Base de Datos Relacional](/modulo-03-Modelado-Base-Datos-Relacional/README.md)**
+📖 **[Ir al Módulo 3: Modelado de Base de Datos Relacional](/modulo-03-Modelado-Base-Datos-Relacional/README.md)**
+
+*Si encuentras algún error o tienes sugerencias para mejorar este módulo, por favor [abre un issue](https://github.com/VictorCY19/Curso-Base-de-datos/issues/new) en el repositorio.*
