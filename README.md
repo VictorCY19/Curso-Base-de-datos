@@ -55,7 +55,14 @@ Al finalizar esta guía, serás capaz de:
 - Ejercicios de práctica
 
 ### **Módulo 5: Consultas Avanzadas**
-- Próximamente
+- JOINS (Uniones entre tablas)
+- Subconsultas
+- GROUP BY y funciones de agregación
+- HAVING (filtrar agrupaciones)
+- Common Table Expressions (CTE)
+- Nomenclatura y uso de alias en SQL
+- Ejercicios prácticos del sistema de ventas
+- Ejercicios de práctica
 
 ### **Módulo 6: Vistas, Funciones y Procedimientos**
 - Próximamente
