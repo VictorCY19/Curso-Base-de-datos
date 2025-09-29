@@ -384,7 +384,10 @@ ORDER BY Año, Mes;
 - ¿Cuál fue la factura más alta?
 - ¿Cuál es la tendencia de ventas mensual?
 
-📖 **[Ir al Capítulo 6: Vistas, Funciones y Procedimientos](/modulo-06-Vistas-Funciones-Procedimientos/README.md)**
+⚠️ **Nota importante**: Hasta aqui te recomiendo practicar bastante el tema de consultas y creación de BD antes de pasar al siguiente modulo, puedes apoyarte en la IA para crear BD para un sistema de pacientes de una clinica por ejemplo ... aprende la lógica de como se construye las tablas y luego prueba todo tipo de consultas, una vez que te sientas bien preparado en todo esto el siguiente modulo se te hara mucho mas sencillo de entender.
+
+
+📖 **[Ir al Modulo 06: Vistas, Funciones y Procedimientos](/modulo-06-Vistas-Funciones-Procedimientos/README.md)**
 
 ---
 
