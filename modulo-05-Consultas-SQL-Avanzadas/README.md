@@ -392,3 +392,4 @@ ORDER BY Año, Mes;
 ---
 
 *Si encuentras algún error o tienes sugerencias para mejorar este capítulo, por favor [abre un issue](https://github.com/VictorCY19/Curso-Base-de-datos/issues/new) en el repositorio.*
+
