@@ -84,7 +84,7 @@ Con la información proporcionada, los estudiantes deben:
 
 📌 **Resultado:**
 
-[Diagrama-Entidad-Relacion](/assets/images/modulo-05/Diagrama_Entidad_Relacion.png)
+![Diagrama-Entidad-Relacion](/assets/images/modulo-05/Diagrama_Entidad_Relacion.png)
 
 Aqui puedes ver la solución del esquema previo que debiste haber creado, puedes ver como las palabras ayudan como conectores para saber como conectar nuestras tablas y como los puntos de conexion tienen diferente diseño para identificar si van de: uno a muchos, muchos a muchos o de uno a uno. Recuerda que esto es muy importante para poder colocar nuestras llaves FK donde corresponde, adicional de crear tablas intermedias de ser necesario. 
 
