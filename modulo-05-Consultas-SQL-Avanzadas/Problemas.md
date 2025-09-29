@@ -2,7 +2,7 @@
 
 En este ejemplo nos pondremos en el papel de un desarrollador junior para resolver el siguiente problema, para ello haremos la simulación de una entrevista con un cliente, el cual nos va a decir sus requisitos para nosotros poder diseñar la BD que el espera. 
 
-👉 **Nota importante**: Primero de un analisis a todo el texto y crea la BD como mejor lo comprendas (no vayas directo a la solución) recuerda que no hay problema si te equivocas, estas aprendiendo y equivocarse es parte de aprender.
+👉 **Nota importante**: Primero realiza un analisis a todo el texto y crea la BD como mejor lo comprendas (no vayas directo a la solución) recuerda que no hay problema si te equivocas, estas aprendiendo y equivocarse es parte de aprender.
 
 
 # 🏥 Caso de Estudio – Sistema Clínica "Salud Vital"
@@ -25,9 +25,7 @@ Un analista de sistemas ha sido convocado por el dueño de la clínica **Salud V
 
 ### 1. **Gestión de Pacientes**
 - Registrar todos los pacientes que llegan a la clínica
-- Datos básicos: nombres completos, DNI, fecha de nacimiento, sexo, dirección, teléfono, correo electrónico
-- Información sobre seguros: saber qué pacientes están asegurados y con qué compañía
-- Un teléfono principal y un correo electrónico por paciente
+- Datos básicos: nombres completos, DNI, fecha de nacimiento, sexo, dirección, teléfono, correo electrónico.
 
 ### 2. **Gestión de Doctores**
 - Registrar doctores con sus especialidades
@@ -43,9 +41,9 @@ Un analista de sistemas ha sido convocado por el dueño de la clínica **Salud V
 
 ### 4. **Consultas Médicas**
 - Cada cita atendida se convierte en una consulta
-- Registrar diagnóstico y tratamientos prescritos
+- Registrar diagnóstico y observaciones prescritos
 - Mantener historial completo de consultas por paciente
-- Relacionar consultas con tratamientos y procedimientos
+- Relacionar consultas con procedimientos
 
 ### 5. **Tratamientos y Procedimientos**
 - Catálogo de procedimientos médicos disponibles
@@ -55,8 +53,7 @@ Un analista de sistemas ha sido convocado por el dueño de la clínica **Salud V
 
 ### 6. **Facturación y Pagos**
 - Generar facturas por consultas y procedimientos
-- Datos de factura: número, fecha, paciente, monto total
-- Detalle de conceptos en cada factura
+- Datos de factura: código, fecha, monto total
 - Control de estado de pago: **pagado** o **pendiente**
 - Registrar fecha de pago cuando se realiza
 
