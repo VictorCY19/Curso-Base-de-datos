@@ -29,7 +29,7 @@ Un analista de sistemas ha sido convocado por el dueño de la clínica **Salud V
 
 ### 2. **Gestión de Doctores**
 - Registrar doctores con sus especialidades
-- Datos requeridos: nombres completos, DNI, especialidad médica, teléfono, correo
+- Datos requeridos: nombres completos, CMP, especialidad médica, teléfono, correo
 - Relacionar cada cita con el doctor que la atendió
 - *Nota: Por ahora, un doctor tiene una especialidad, pero podría capacitarse en otra*
 
@@ -117,7 +117,7 @@ CREATE TABLE Pacientes (
 -- 2. Tabla Médicos
 CREATE TABLE Medicos (
     IdMedico INT PRIMARY KEY IDENTITY(1,1),
-    CMP NVARCHAR(20) UNIQUE NOT NULL, --Reemplazamos por DNI para trabajar con un codigo diferente
+    CMP NVARCHAR(20) UNIQUE NOT NULL, 
     Nombre NVARCHAR(100) NOT NULL,
     Apellido NVARCHAR(100) NOT NULL,
     Especialidad NVARCHAR(100) NOT NULL,
