@@ -117,7 +117,7 @@ CREATE TABLE Pacientes (
 -- 2. Tabla Médicos
 CREATE TABLE Medicos (
     IdMedico INT PRIMARY KEY IDENTITY(1,1),
-    CMP NVARCHAR(20) UNIQUE NOT NULL,
+    CMP NVARCHAR(20) UNIQUE NOT NULL, --Reemplazamos por DNI para trabajar con un codigo diferente
     Nombre NVARCHAR(100) NOT NULL,
     Apellido NVARCHAR(100) NOT NULL,
     Especialidad NVARCHAR(100) NOT NULL,
