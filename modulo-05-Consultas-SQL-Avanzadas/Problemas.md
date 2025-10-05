@@ -84,82 +84,70 @@ Con la información proporcionada, los estudiantes deben:
 ## 📋 Solución Propuesta - Scripts SQL
 
 ```sql
--- 1. Tabla Pacientes
-CREATE TABLE Pacientes (
-    IdPaciente INT PRIMARY KEY IDENTITY(1,1),
-    DNI CHAR(8) UNIQUE NOT NULL,
-    Nombre NVARCHAR(100) NOT NULL,
-    Apellido NVARCHAR(100) NOT NULL,
-    FechaNacimiento DATE NOT NULL,
-    Sexo CHAR(1) CHECK (Sexo IN ('M','F')),
-    Telefono NVARCHAR(15),
-    Email NVARCHAR(100),
-    Direccion NVARCHAR(200),
-    FechaRegistro DATETIME DEFAULT GETDATE()
+-- 1. Tabla Paciente
+CREATE TABLE Paciente(
+IdPaciente INT PRIMARY KEY IDENTITY (1,1),
+DNI CHAR(8) UNIQUE NOT NULL, --aplicamos char ya que el DNI (Peru) es de 8 caracteres
+Nombre NVARCHAR(100) NOT NULL,
+Apellido NVARCHAR(100) NOT NULL, 
+Fecha_Nacimiento DATE NOT NULL,
+Sexo CHAR(1) CHECK (sexo IN ('M','F')),
+Direccion NVARCHAR(200),
+Telefono NVARCHAR(15),
+Correo NVARCHAR(100),
+Fecha_Registro DATETIME DEFAULT GETDATE()
 );
 -- 🔹 Lógica: El paciente se identifica por DNI. Se almacena su información de contacto y fecha de registro. Esto es fundamental porque todo gira alrededor del paciente.
 
--- 2. Tabla Médicos
-CREATE TABLE Medicos (
-    IdMedico INT PRIMARY KEY IDENTITY(1,1),
-    CMP NVARCHAR(20) UNIQUE NOT NULL, 
-    Nombre NVARCHAR(100) NOT NULL,
-    Apellido NVARCHAR(100) NOT NULL,
-    Especialidad NVARCHAR(100) NOT NULL,
-    Telefono NVARCHAR(15),
-    Email NVARCHAR(100)
+-- 2. Tabla Doctor
+CREATE TABLE Doctor(
+IdDoctor INT PRIMARY KEY IDENTITY (1,1), 
+CMP NVARCHAR(20) UNIQUE NOT NULL, 
+Nombre NVARCHAR(100) NOT NULL,
+Apellido NVARCHAR(100) NOT NULL, 
+Especialidad NVARCHAR(100) NOT NULL,
+Telefono NVARCHAR(15) NOT NULL, 
+Correo NVARCHAR(100) NOT NULL
 );
 -- 🔹 Lógica: Cada médico tiene un CMP (registro profesional). La especialidad es importante para las citas (ej: pediatría, cardiología).
 
--- 3. Tabla Citas Médicas
-CREATE TABLE Citas (
-    IdCita INT PRIMARY KEY IDENTITY(1,1),
-    IdPaciente INT NOT NULL,
-    IdMedico INT NOT NULL,
-    FechaHora DATETIME NOT NULL,
-    Estado NVARCHAR(20) DEFAULT 'Pendiente' CHECK (Estado IN ('Pendiente','Atendida','Cancelada')),
-    Motivo NVARCHAR(200),
-    FOREIGN KEY (IdPaciente) REFERENCES Pacientes(IdPaciente),
-    FOREIGN KEY (IdMedico) REFERENCES Medicos(IdMedico)
+-- 3. Tabla Cita_Consulta
+CREATE TABLE Cita_Consulta (
+IdCita INT PRIMARY KEY IDENTITY (1,1),
+IdPaciente INT NOT NULL, 
+IdDoctor INt NOT NULL, 
+FechaHora DATETIME NOT NULL,
+Estado NVARCHAR(20) DEFAULT 'Pendiente' CHECK (estado IN ('Pendiente', 'Atendida', 'Cancelada', 'No Asistio')),
+FOREIGN KEY (IdPaciente) REFERENCES Paciente(IdPaciente),
+FOREIGN KEY (IdDoctor) REFERENCES Doctor(IdDoctor)
 );
--- 🔹 Lógica: Relaciona un paciente con un médico en una fecha/hora. Estado indica si la cita fue atendida o cancelada. "Motivo" es opcional (ejemplo: "dolor de cabeza").
+-- 🔹 Lógica: Relaciona un paciente con un médico en una fecha/hora. Estado indica si la cita fue atendida,cancelada, pendiento o no asistio.
 
--- 4. Tabla Consultas Médicas
-CREATE TABLE Consultas (
-    IdConsulta INT PRIMARY KEY IDENTITY(1,1),
-    IdCita INT NOT NULL,
-    Diagnostico NVARCHAR(500),
-    Tratamiento NVARCHAR(500),
-    Observaciones NVARCHAR(500),
-    FechaConsulta DATETIME DEFAULT GETDATE(),
-    FOREIGN KEY (IdCita) REFERENCES Citas(IdCita)
+-- 4. Tabla Procedimiento
+CREATE TABLE Procedimiento (
+IdProcedimiento INT PRIMARY KEY IDENTITY (1,1),
+Nombre NVARCHAr(100) NOT NULL, 
+Descripcion NVARCHAR(200),
+Costo DECIMAL(10,2) NOT NULL
 );
--- 🔹 Lógica: Cada cita atendida genera una consulta. Incluye diagnóstico, tratamiento y observaciones médicas. Es la información más importante para el historial clínico.
+-- 🔹 Lógica: Cada procedimiento tiene un nombre, descripcion y un costo.
 
--- 5. Tabla Procedimientos
-CREATE TABLE Procedimientos (
-    IdProcedimiento INT PRIMARY KEY IDENTITY(1,1),
-    Nombre NVARCHAR(100) NOT NULL,
-    Descripcion NVARCHAR(200),
-    Costo DECIMAL(10,2) NOT NULL
+-- 5. Tabla Detalle_Tratamiento
+CREATE TABLE Detalle_Tratamiento (
+IdCita int not null,
+IdProcedimiento int not null,
+--Definicion de clave primaria compuesta
+--Ambas columnas combinadas identifican un registro unico
+Primary KEY (IdCita, IdProcedimiento),
+--Restricciones de llave foranea (FK) 
+FOREIGN KEY (IdCita) REFERENCES Cita_Consulta(IdCita), 
+FOREIGN KEY (IdProcedimiento) REFERENCES Procedimiento(IdProcedimiento)
 );
--- 🔹 Lógica: Procedimientos como "Ecografía", "Análisis de sangre", "Electrocardiograma". Se usarán en conjunto con consultas y pagos.
+-- 🔹 Lógica: Cita y Procedimiento tienen una relacion de N:M por lo que se crea una tabla intermedia con ambos id como PK y ademas lo definimod como FK.
 
--- 6. Tabla Pagos
-CREATE TABLE Pagos (
-    IdPago INT PRIMARY KEY IDENTITY(1,1),
-    IdConsulta INT NULL,
-    IdProcedimiento INT NULL,
-    Monto DECIMAL(10,2) NOT NULL,
-    MetodoPago NVARCHAR(20) CHECK (MetodoPago IN ('Efectivo','Tarjeta','Transferencia')),
-    FechaPago DATETIME DEFAULT GETDATE(),
-    FOREIGN KEY (IdConsulta) REFERENCES Consultas(IdConsulta),
-    FOREIGN KEY (IdProcedimiento) REFERENCES Procedimientos(IdProcedimiento)
-);
--- 🔹 Lógica: Un pago puede estar asociado a una consulta o a un procedimiento. Se registra monto, método y fecha. Refleja la parte administrativa de la clínica.
 ```
 
-**Con esto hemos terminado de resolver el problema, pero esto no es todo realmente podemos seguir mejorando esta BD con mas tablas para resolver mas problemas, asi de este modo crea diferentes BD que resuelvan varios problemas del dia a dia y practica** 
+**Con esto hemos terminado de resolver el problema, pero esto no es todo realmente, podemos seguir mejorando esta BD con mas tablas para resolver mas problemas, asi de este modo crea diferentes BD que resuelvan varios problemas del dia a dia y practica** 
 
 ⚠️ **Nota importante**: En caso no entiendas algo recuerda apoyarte con IA o con alguna fuente de internet para poder resolver tus dudas. 
 
@@ -172,79 +160,50 @@ CREATE TABLE Pagos (
 ⚠️ **Nota importante**: Estos datos puedes copiar directamente para empezar a trabajar con las consultas, eso si practica manualmente insertando los datos, una vez tengas dominado puedes empezar a copiar y pegar directamente. 
 
 ```sql
--- 1. Pacientes
-INSERT INTO Pacientes (DNI, Nombre, Apellido, FechaNacimiento, Sexo, Telefono, Email, Direccion)
-VALUES
-('12345678','Juan','Pérez','1990-05-15','M','987654321','juan.perez@mail.com','Av. Siempre Viva 123'),
-('87654321','María','González','1985-11-20','F','912345678','maria.gonzalez@mail.com','Jr. Los Olivos 456'),
-('11223344','Pedro','Ramírez','2000-03-10','M','999888777','pedro.ramirez@mail.com','Calle Sol 789'),
-('44332211','Ana','Torres','1995-07-25','F','955443322','ana.torres@mail.com','Av. Luna 222'),
-('55667788','Luis','Fernández','1978-01-30','M','988776655','luis.fernandez@mail.com','Jr. Estrella 654');
+-- 1. Paciente
+INSERT INTO Paciente (DNI, Nombre, Apellido, Fecha_Nacimiento, Sexo, Direccion, Telefono, Correo) VALUES
+('12345678', 'Ana', 'Torres', '1985-05-20', 'F', 'Av. Las Flores 123', '987654321', 'ana.torres@mail.com'),
+('23456789', 'Luis', 'Gómez', '1992-11-10', 'M', 'Calle Los Sauces 456', '912345678', 'luis.gomez@mail.com'),
+('34567890', 'Elena', 'Pérez', '1970-01-15', 'F', 'Jirón Lima 789', '998877665', 'elena.perez@mail.com');
 
--- 2. Médicos
-INSERT INTO Medicos (CMP, Nombre, Apellido, Especialidad, Telefono, Email)
-VALUES
-('CMP001','Carlos','Lopez','Cardiología','913456789','carlos.lopez@clinica.com'),
-('CMP002','Sofía','Martinez','Pediatría','914567890','sofia.martinez@clinica.com'),
-('CMP003','Javier','Castro','Dermatología','915678901','javier.castro@clinica.com'),
-('CMP004','Elena','Rivas','Medicina General','916789012','elena.rivas@clinica.com');
+-- 2. Doctor
+INSERT INTO Doctor (CMP, Nombre, Apellido, Especialidad, Telefono, Correo) VALUES
+('CMP12345', 'Carlos', 'Mata', 'Cardiología', '900111222', 'carlos.mata@salud.com'),
+('CMP67890', 'Elena', 'Soto', 'Medicina General', '900333444', 'elena.soto@salud.com'),
+('CMP11223', 'Roberto', 'Lira', 'Pediatría', '900555666', 'roberto.lira@salud.com');
 
--- 3. Citas
-INSERT INTO Citas (IdPaciente, IdMedico, FechaHora, Estado, Motivo)
-VALUES
-(1,1,'2025-09-01 10:00:00','Atendida','Dolor en el pecho'),
-(2,2,'2025-09-02 11:00:00','Atendida','Fiebre y tos'),
-(3,3,'2025-09-03 15:00:00','Pendiente','Irritación en la piel'),
-(4,4,'2025-09-04 09:30:00','Atendida','Chequeo general'),
-(5,1,'2025-09-05 14:00:00','Cancelada','Dolor de cabeza');
+-- 3. Cita
+INSERT INTO Cita_Consulta (IdPaciente, IdDoctor, FechaHora, Estado) VALUES
+(1, 2, '2025-10-05 10:00:00', 'Atendida'),
+(2, 1, '2025-10-07 15:30:00', 'Pendiente'),
+(1, 1, '2025-10-06 11:00:00', 'Cancelada'),
+(3, 3, '2025-10-05 16:00:00', 'No Asistio');
 
--- 4. Consultas
-INSERT INTO Consultas (IdCita, Diagnostico, Tratamiento, Observaciones)
-VALUES
-(1,'Angina leve','Reposo y aspirina','Paciente debe controlarse en 1 mes'),
-(2,'Bronquitis','Antibióticos y jarabe','Revisión en 2 semanas'),
-(4,'Sin complicaciones','Vitaminas y dieta balanceada','Paciente en buen estado');
+-- 4. Procedimiento
+INSERT INTO Procedimiento (Nombre, Descripcion, Costo) VALUES
+('Análisis de Sangre', 'Perfil completo de hematología y química.', 50.00),
+('Radiografía de Tórax', 'Imagen para evaluar pulmones y corazón.', 80.00),
+('Consulta de Seguimiento', 'Revisión posterior al diagnóstico inicial.', 30.00),
+('Cirugía Menor', 'Extracción de quiste o sutura simple.', 250.00);
 
--- Nota: Cita 3 está pendiente, por eso no tiene consulta todavía.
--- Nota: Cita 5 fue cancelada, por eso tampoco tiene consulta.
+-- 5. Detalle
+-- Detalle para la Cita 1 (Atendida a Ana Torres)
+INSERT INTO Detalle_Tratamiento (IdCita, IdProcedimiento) VALUES
+(1, 1), -- Cita 1: Análisis de Sangre
+(1, 3); -- Cita 1: Consulta de Seguimiento
 
--- 5. Procedimientos
-INSERT INTO Procedimientos (Nombre, Descripcion, Costo)
-VALUES
-('Electrocardiograma','Examen del corazón','150.00'),
-('Radiografía de tórax','Imagen diagnóstica pulmonar','200.00'),
-('Análisis de sangre','Perfil completo','100.00'),
-('Ecografía abdominal','Imagen de abdomen','180.00');
+-- Detalle para la Cita 2 (Luis Gómez) - Aún no está atendida, pero se puede pre-registrar.
+INSERT INTO Detalle_Tratamiento (IdCita, IdProcedimiento) VALUES
+(2, 2); -- Cita 2: Radiografía de Tórax
 
--- 6. Pagos
--- Pago de consulta de Juan (IdConsulta=1)
-INSERT INTO Pagos (IdConsulta, Monto, MetodoPago)
-VALUES (1,80.00,'Efectivo');
-
--- Pago de consulta de María (IdConsulta=2)
-INSERT INTO Pagos (IdConsulta, Monto, MetodoPago)
-VALUES (2,100.00,'Tarjeta');
-
--- Pago de procedimiento (Electrocardiograma) hecho por Juan
-INSERT INTO Pagos (IdProcedimiento, Monto, MetodoPago)
-VALUES (1,150.00,'Efectivo');
-
--- Pago de procedimiento (Radiografía de tórax) hecho por María
-INSERT INTO Pagos (IdProcedimiento, Monto, MetodoPago)
-VALUES (2,200.00,'Transferencia');
-
--- Pago de procedimiento (Análisis de sangre) hecho por Ana (Consulta=3 aún pendiente, lo dejamos NULL para simular un caso futuro)
-INSERT INTO Pagos (IdProcedimiento, Monto, MetodoPago)
-VALUES (3,100.00,'Efectivo');
 ```
 
 ## 📌 Explicación de la carga de datos
-- 5 pacientes (diferentes edades y sexos).
-- 4 médicos con distintas especialidades.
-- 5 citas: unas atendidas, una pendiente y otra cancelada (ideal para probar filtros por estado).
-- 3 consultas registradas (solo las citas atendidas).
+- 3 pacientes (diferentes edades y sexos).
+- 3 doctores con distintas especialidades.
+- 4 citas: una por cada estado posible.
 - 4 procedimientos disponibles.
-- 5 pagos (algunos por consulta, otros por procedimiento).
+- Detalle para la cita 1 y 2.
 
 
 👉 Ahora continuaremos con consultas SQL desde las mas sencillas hasta mas complicadas
