@@ -25,7 +25,7 @@ Un analista de sistemas ha sido convocado por el dueño de la clínica **Salud V
 
 ### 1. **Gestión de Pacientes**
 - Registrar todos los pacientes que llegan a la clínica
-- Datos básicos: nombres completos, DNI, fecha de nacimiento, sexo, dirección, teléfono, correo electrónico.
+- Datos básicos: nombres completos, DNI, fecha de nacimiento, sexo, dirección, teléfono, correo electrónico y fecha de registro.
 
 ### 2. **Gestión de Doctores**
 - Registrar doctores con sus especialidades
@@ -33,11 +33,9 @@ Un analista de sistemas ha sido convocado por el dueño de la clínica **Salud V
 - Relacionar cada cita con el doctor que la atendió
 - *Nota: Por ahora, un doctor tiene una especialidad, pero podría capacitarse en otra*
 
-### 3. **Gestión de Citas Médicas**
-- Reservar citas con doctor en fecha y hora específica
-- Registrar: paciente, doctor, fecha, hora, estado de la cita
+### 3. **Gestión de Citas / Consultas**
+- Se debe poder registrar al paciente, doctor, fecha, hora y estado
 - Estados posibles: **pendiente**, **atendida**, **cancelada**, **no asistió**
-- Control de pacientes que no asisten a sus citas
 
 ### 4. **Consultas Médicas**
 - Cada cita atendida se convierte en una consulta
@@ -45,22 +43,11 @@ Un analista de sistemas ha sido convocado por el dueño de la clínica **Salud V
 - Mantener historial completo de consultas por paciente
 - Relacionar consultas con procedimientos
 
-### 5. **Tratamientos y Procedimientos**
+### 5. **Procedimientos**
 - Catálogo de procedimientos médicos disponibles
 - Ejemplos: análisis de sangre, radiografías, cirugías menores
 - Datos: nombre, descripción, costo del procedimiento
-- Asociar procedimientos a consultas específicas
-
-### 6. **Facturación y Pagos**
-- Generar facturas por consultas y procedimientos
-- Datos de factura: código, fecha, monto total
-- Control de estado de pago: **pagado** o **pendiente**
-- Registrar fecha de pago cuando se realiza
-
-### 7. **Consideraciones Futuras**
-- Sistema flexible para crecimiento futuro
-- Posibles módulos adicionales: inventario de medicinas, historial de seguros, pagos con tarjeta
-- *Prioridad actual: pacientes, doctores, citas, consultas, procedimientos y facturación*
+- Asociar procedimientos a citas específicas
 
 ---
 
@@ -83,17 +70,15 @@ Con la información proporcionada, los estudiantes deben:
 
 ![Diagrama-Entidad-Relacion](/assets/images/modulo-05/Diagrama_Entidad_Relacion.png)
 
-Aqui puedes ver la solución del esquema previo que debiste haber creado, puedes ver como las palabras ayudan como conectores para saber como conectar nuestras tablas y como los puntos de conexion tienen diferente diseño para identificar si van de: uno a muchos, muchos a muchos o de uno a uno. Recuerda que esto es muy importante para poder colocar nuestras llaves FK donde corresponde, adicional de crear tablas intermedias de ser necesario. 
 
 📌 **Explicación del flujo:**
 
 - Pacientes solicitan Citas.
 - Doctores atienden esas Citas.
-- Cada Cita genera una Consulta.
-- Una Consulta puede tener uno o varios Pagos asociados.
-- Una Consulta puede incluir uno o varios Procedimientos médicos.
+- Cada Cita incluye procedimiento.
+- El procedimiento se incluye en la cita.
 
-⚠️ **Nota importante**: este es solo el esquema inicial, ahora cuando pasemos al codigo aumentaremos algunos campos que aporten mas a nuestras tablas y puedan desarrollarse mejor. 
+⚠️ **Nota importante**: Manejamos una tabla intermedia para citas y procedimientos ya que va de una relacion de M:N, y por consiguiente su llave principal se conforma de los id de ambas tablas. 
 
 
 ## 📋 Solución Propuesta - Scripts SQL
