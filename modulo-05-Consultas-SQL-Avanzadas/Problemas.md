@@ -216,142 +216,107 @@ INSERT INTO Detalle_Tratamiento (IdCita, IdProcedimiento) VALUES
 ## Nivel Facil 
 
 ```sql 
---1. Listar todos los pacientes registrados (usando SELECT *)
-SELECT * 
-FROM Pacientes;
---Nota:
---El * significa “traer todas las columnas de la tabla”.
---Esto devolverá: IdPaciente, DNI, Nombre, Apellido, FechaNacimiento, Sexo, Telefono, Email, Direccion, FechaRegistro.
---Es útil cuando recién exploras la tabla o necesitas una vista rápida de todos los datos.
+-- 1. Listar todos los pacientes registrados (usando SELECT *)
+SELECT * FROM Paciente;
 
---Recomendación: en producción lo mejor es especificar las columnas que realmente necesitas para optimizar rendimiento y claridad.
+-- 2. Mostrar todos los doctores y sus especialidades.
+SELECT IdDoctor, CMP, Nombre, Apellido, Especialidad
+FROM Doctor;
 
-
---2. Mostrar todos los médicos y sus especialidades.
-SELECT IdMedico, CMP, Nombre, Apellido, Especialidad
-FROM Medicos;
---Lógica: Listado más limpio de los médicos, sin columnas extra.
-
-
---3. Ver todas las citas ordenadas por fecha.
-SELECT IdCita, IdPaciente, IdMedico, FechaHora, Estado
-FROM Citas
+-- 3. Ver todas las citas (citas/consultas) ordenadas por fecha.
+SELECT IdCita, IdPaciente, IdDoctor, FechaHora, Estado
+FROM Cita_Consulta
 ORDER BY FechaHora;
---Lógica: Permite al administrador ver el calendario de citas en orden.
 
-
---4. Consultar todos los procedimientos disponibles.
+-- 4. Consultar todos los procedimientos disponibles.
 SELECT IdProcedimiento, Nombre, Descripcion, Costo
-FROM Procedimientos;
---Lógica: Muestra el catálogo de procedimientos y precios.
+FROM Procedimiento;
 
-
---5. Mostrar todos los pagos realizados.
-SELECT IdPago, Monto, MetodoPago, FechaPago
-FROM Pagos;
---Lógica: Permite controlar ingresos y revisar fechas de pago.
 ```
 
 
 ## Nivel Intermedio 
 
 ```sql 
---1. Mostrar las citas pendientes de un paciente específico.
-SELECT C.IdCita, C.FechaHora, M.Nombre AS Medico, M.Apellido, C.Estado
-FROM Citas C
-JOIN Medicos M ON C.IdMedico = M.IdMedico
-WHERE C.IdPaciente = 1 AND C.Estado = 'Pendiente';
---Lógica: Relaciona pacientes con médicos y filtra solo citas pendientes.
+-- 1. Mostrar las citas pendientes de un paciente específico (ej: IdPaciente = 2).
+SELECT CC.IdCita, CC.FechaHora, D.Nombre AS Doctor, D.Apellido, CC.Estado
+FROM Cita_Consulta CC
+JOIN Doctor D ON CC.IdDoctor = D.IdDoctor
+WHERE CC.IdPaciente = 2 AND CC.Estado = 'Pendiente';
+-- Lógica: Une 'Cita_Consulta' con 'Doctor' y filtra por IdPaciente y Estado.
 
-
---2. Listar los pacientes con más de una cita registrada.
-SELECT P.Nombre, P.Apellido, COUNT(C.IdCita) AS TotalCitas
-FROM Pacientes P
-JOIN Citas C ON P.IdPaciente = C.IdPaciente
+-- 2. Listar los pacientes con más de una cita registrada.
+SELECT P.Nombre, P.Apellido, COUNT(CC.IdCita) AS TotalCitas
+FROM Paciente P
+JOIN Cita_Consulta CC ON P.IdPaciente = CC.IdPaciente
 GROUP BY P.Nombre, P.Apellido
-HAVING COUNT(C.IdCita) > 1;
---Lógica: Identifica a los pacientes más recurrentes.
+HAVING COUNT(CC.IdCita) > 1;
+-- Lógica: Utiliza COUNT y HAVING para identificar pacientes recurrentes.
 
+-- 3. Mostrar todas las citas atendidas y su doctor asociado.
+-- Nota: En este modelo, el 'Diagnostico' iría en la tabla Cita_Consulta.
+SELECT CC.IdCita, CC.FechaHora, D.Nombre AS Doctor, D.Apellido
+FROM Cita_Consulta CC
+JOIN Doctor D ON CC.IdDoctor = D.IdDoctor
+WHERE CC.Estado = 'Atendida';
+-- Lógica: Filtra solo registros de 'Atendida' (que equivalen a consultas).
 
---3. Mostrar todas las consultas con diagnóstico y su médico asociado.
-SELECT Con.IdConsulta, Con.Diagnostico, Con.Tratamiento, M.Nombre AS Medico, M.Apellido
-FROM Consultas Con
-JOIN Citas Ci ON Con.IdCita = Ci.IdCita
-JOIN Medicos M ON Ci.IdMedico = M.IdMedico;
---Lógica: Une consultas con citas y médicos, útil para historial clínico.
+-- 4. Listar las citas atendidas en un rango de fechas.
+SELECT CC.IdCita, P.Nombre AS Paciente, D.Nombre AS Doctor, CC.FechaHora
+FROM Cita_Consulta CC
+JOIN Paciente P ON CC.IdPaciente = P.IdPaciente
+JOIN Doctor D ON CC.IdDoctor = D.IdDoctor
+WHERE CC.Estado = 'Atendida'
+  AND CC.FechaHora BETWEEN '2025-10-01' AND '2025-10-31';
+-- Lógica: Utiliza el JOIN doble para obtener nombres y filtra por rango de fecha.
 
-
---4. Obtener el total de pagos por método de pago.
-SELECT MetodoPago, SUM(Monto) AS TotalRecaudado
-FROM Pagos
-GROUP BY MetodoPago;
---Lógica: Resumen financiero de ingresos por tipo de pago.
-
-
---5. Listar las citas atendidas en un rango de fechas.
-SELECT C.IdCita, P.Nombre AS Paciente, M.Nombre AS Medico, C.FechaHora
-FROM Citas C
-JOIN Pacientes P ON C.IdPaciente = P.IdPaciente
-JOIN Medicos M ON C.IdMedico = M.IdMedico
-WHERE C.Estado = 'Atendida'
-  AND C.FechaHora BETWEEN '2025-09-01' AND '2025-09-30';
---Lógica: Permite al administrador revisar el historial de un mes específico.
 ```
 
 
 ## Nivel Avanzado 
 
 ```sql 
---1. Top 3 médicos con más citas atendidas.
-SELECT TOP 3 M.Nombre, M.Apellido, COUNT(C.IdCita) AS TotalCitas
-FROM Medicos M
-JOIN Citas C ON M.IdMedico = C.IdMedico
-WHERE C.Estado = 'Atendida'
-GROUP BY M.Nombre, M.Apellido
-ORDER BY TotalCitas DESC;
---Lógica: Ranking de médicos más activos en la clínica.
+-- 1. Top 3 doctores con más citas atendidas.
+SELECT TOP 3 D.Nombre, D.Apellido, COUNT(CC.IdCita) AS TotalCitasAtendidas
+FROM Doctor D
+JOIN Cita_Consulta CC ON D.IdDoctor = CC.IdDoctor
+WHERE CC.Estado = 'Atendida'
+GROUP BY D.Nombre, D.Apellido
+ORDER BY TotalCitasAtendidas DESC;
+-- Lógica: Ranking de doctores activos.
 
-
---2. Pacientes que nunca han tenido una cita atendida.
+-- 2. Pacientes que nunca han tenido una cita atendida.
 SELECT P.IdPaciente, P.Nombre, P.Apellido
-FROM Pacientes P
+FROM Paciente P
 WHERE NOT EXISTS (
     SELECT 1
-    FROM Citas C
-    WHERE C.IdPaciente = P.IdPaciente
-      AND C.Estado = 'Atendida'
+    FROM Cita_Consulta CC
+    WHERE CC.IdPaciente = P.IdPaciente
+      AND CC.Estado = 'Atendida'
 );
---Lógica: Busca pacientes registrados sin historial de consultas efectivas.
+-- Lógica: Uso avanzado de NOT EXISTS para encontrar pacientes sin historial efectivo.
 
+-- 3. Citas atendidas con sus procedimientos y costo total.
+SELECT CC.IdCita, P.Nombre AS Paciente, CC.FechaHora, 
+       Pr.Nombre AS Procedimiento, Pr.Costo
+FROM Cita_Consulta CC
+JOIN Paciente P ON CC.IdPaciente = P.IdPaciente
+JOIN Detalle_Tratamiento DT ON CC.IdCita = DT.IdCita
+JOIN Procedimiento Pr ON DT.IdProcedimiento = Pr.IdProcedimiento
+WHERE CC.Estado = 'Atendida';
+-- Lógica: Integra las 4 tablas centrales para ver qué se hizo en cada atención.
 
---3. Consultas con procedimientos y pagos asociados.
-SELECT Co.IdConsulta, Co.Diagnostico, Pr.Nombre AS Procedimiento, Pa.Monto, Pa.MetodoPago
-FROM Consultas Co
-LEFT JOIN Pagos Pa ON Co.IdConsulta = Pa.IdConsulta
-LEFT JOIN Procedimientos Pr ON Pa.IdProcedimiento = Pr.IdProcedimiento;
---Lógica: Integra diagnóstico, tratamiento y pagos asociados en un solo reporte.
-
-
---4. Ingresos mensuales de la clínica.
-SELECT YEAR(FechaPago) AS Año, MONTH(FechaPago) AS Mes, SUM(Monto) AS TotalIngresos
-FROM Pagos
-GROUP BY YEAR(FechaPago), MONTH(FechaPago)
-ORDER BY Año DESC, Mes DESC;
---Lógica: Informe financiero agrupado por mes y año.
-
-
---5. Historial completo de un paciente (citas, consultas, pagos).
-SELECT P.Nombre AS Paciente, C.FechaHora, C.Estado,
-       Co.Diagnostico, Co.Tratamiento,
-       Pr.Nombre AS Procedimiento, Pa.Monto, Pa.MetodoPago
-FROM Pacientes P
-JOIN Citas C ON P.IdPaciente = C.IdPaciente
-LEFT JOIN Consultas Co ON C.IdCita = Co.IdCita
-LEFT JOIN Pagos Pa ON Co.IdConsulta = Pa.IdConsulta
-LEFT JOIN Procedimientos Pr ON Pa.IdProcedimiento = Pr.IdProcedimiento
-WHERE P.IdPaciente = 1
-ORDER BY C.FechaHora;
---Lógica: Reporte integral que combina todas las tablas para un paciente.
+-- 4. Historial completo de un paciente (citas, doctor y procedimientos).
+SELECT P.Nombre AS Paciente, D.Nombre AS Doctor, CC.FechaHora, CC.Estado,
+         Pr.Nombre AS Procedimiento, Pr.Costo
+FROM Paciente P
+JOIN Cita_Consulta CC ON P.IdPaciente = CC.IdPaciente
+JOIN Doctor D ON CC.IdDoctor = D.IdDoctor
+LEFT JOIN Detalle_Tratamiento DT ON CC.IdCita = DT.IdCita
+LEFT JOIN Procedimiento Pr ON DT.IdProcedimiento = Pr.IdProcedimiento
+WHERE P.IdPaciente = 1 -- Historial de Ana Torres
+ORDER BY CC.FechaHora;
+-- Lógica: Reporte integral usando LEFT JOIN para incluir citas que no tuvieron procedimientos.
 ```
 
 
