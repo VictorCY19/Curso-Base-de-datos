@@ -65,34 +65,83 @@ Al finalizar esta guía, serás capaz de:
 - Ejercicios de práctica
 
 ### **Módulo 6: Vistas, Funciones y Procedimientos**
-- Próximamente
+- Vistas: Crear, Modificar, Eliminar 
+- Funciones escalares y de tabla en SQL Server
+- Procedimientos Almacenados: Creacion y Ejecucion 
+- Parametros en Procedimientos 
+- Beneficios en Rendimiento y Seguridad
+- Ejercicios de practica
 
 ### **Módulo 7: Índices y Rendimiento**
-- Próximamente 
+- Concepto de Indices 
+- Indices Clustered y No-Clustered 
+- Indices Unicos y Compuestos 
+- Fragmentación en Impacto en Consultas 
+- Uso de EXPLAIN / planes de ejecucion en SSMS 
+- Ejercicios de practica 
 
 ### **Módulo 8: Seguridad en SQL Server**
-- Próximamente
+- Principios de Roles y Usuarios 
+- GRANT, REVOKE, DENY 
+- Creacion de inicios de sesion y usarios de BD 
+- Permisos a nivel de tabla, columna y procedimientos
+- Buenas practicas de seguridad en entornos laborales
+- Ejercicios de practica
 
 ### **Módulo 9: Transacciones y Control de Concurrencia**
-- Próximamente 
+- Concepto de Transaccion 
+- Comandos: BEGIN TRAN, COMMIT, ROLLBACK
+- Manejo de errores con TRY_CATCH
+- Niveles de aislamiento de transacciones 
+- Deadlocks y como evitarlos 
+- Ejercicio de practica 
 
 ### **Módulo 10: Triggers** 
-- Próximamente 
+- ¿Que es un Trigger? 
+- Tipos de Trigger: AFTER y INSTEAD OF
+- Casos de uso (auditoría, validación, automatización)
+- Limitaciones y buenas prácticas
+- Ejercicio de practica 
 
 ### **Módulo 11: Administración de Bases de Datos** 
-- Próximamente 
+- Backups: completos, diferenciales, transaccionales
+- Restauración de bases de datos
+- Estrategias de recuperación
+- Tareas de mantenimiento: shrink, rebuild, update statistics
+- Monitoreo básico en SSMS (Activity Monitor)
+- Ejercicio de practica 
 
 ### **Módulo 12: Integración y Exportación de Datos**
-- Próximamente 
+- Importación desde archivos Excel, CSV
+- Exportación de datos
+- Uso de BULK INSERT
+- Linked Servers (conexiones externas)
+- Ejercicio de practica 
 
 ### **Módulo 13: Reporting y Análisis de Datos**
-- Próximamente 
+- Generar reportes en SQL Server con consultas avanzadas
+- Funciones de ventana: ROW_NUMBER, RANK, LEAD, LAG
+- Pivot y Unpivot en SQL Server
+- Ejercicio de practica 
 
 ### **Módulo 14: Buenas Prácticas y Estándares**
-- Próximamente 
+- Convenciones de nombres en bases de datos
+- Documentación de procedimientos y vistas
+- Estrategias de versionamiento de bases de datos
+- Optimización de consultas paso a paso
+- Checklist de un DBA junior en el mundo laboral
 
 ### **Módulo 15: Proyecto Final** 
-- Próximamente
+- Construcción completa de una base de datos para un sistema clínico o de ventas (similar a un caso real)
+
+**Incluye:**
+- Modelado ER.
+- Creación de tablas con llaves y relaciones.
+- Población de datos de prueba.
+- Procedimientos almacenados para operaciones clave.
+- Vistas y reportes de negocio.
+- Manejo de seguridad (usuarios y roles).
+- Backups y restauración de la base.
 
 ## 🚀 Características clave
 
