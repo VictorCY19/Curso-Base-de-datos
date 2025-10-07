@@ -36,8 +36,7 @@ CREATE TABLE Auditoria_Citas (
     EstadoAnterior NVARCHAR(20),
     EstadoNuevo NVARCHAR(20),
     FechaCambio DATETIME DEFAULT GETDATE(),
-    UsuarioCambio NVARCHAR(100) DEFAULT SUSER_SNAME(),
-    FOREIGN KEY (IdCita) REFERENCES Cita_Consulta (IdCita)
+    UsuarioCambio NVARCHAR(100) DEFAULT SUSER_SNAME()
 );
 GO
 
