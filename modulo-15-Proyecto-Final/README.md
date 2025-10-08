@@ -126,7 +126,7 @@ Garantizar la recuperabilidad de la base de datos ante un fallo catastrófico.
 
 👉 **¡Buena suerte! Este proyecto es tu portafolio, demuestra tu dominio de SQL Server.**
 
-📖 Puedes enviarme el link de portafolio o tu proyecto comprimido a mi**[Correo](mailto:al_victor99@hotmail.com?subject=Proyecto_Modulo15_Curso_BD)** tratare de responderte lo antes posible, muchas gracias por leer este primer curso, no olviden compartir este material con personas que crean que les puede ayudar bastante. 
+📖 Puedes enviarme el link de portafolio o tu proyecto comprimido a mi [**Correo**](mailto:al_victor99@hotmail.com?subject=Proyecto_Modulo15_Curso_BD) tratare de responderte lo antes posible, muchas gracias por leer este primer curso, no olviden compartir este material con personas que crean que les puede ayudar bastante. 
 
 ¡Hasta el proximo curso! 🦘
 
