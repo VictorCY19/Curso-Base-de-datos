@@ -130,6 +130,7 @@ Garantizar la recuperabilidad de la base de datos ante un fallo catastrófico.
 
 ¡Hasta el proximo curso! 🦘
 
+```txt
 #    #    #    #     #  #####  #     # ######  ####### 
 #   #    # #   ##    # #     # #     # #     # #     # 
 #  #    #   #  # #   # #       #     # #     # #     # 
@@ -137,7 +138,7 @@ Garantizar la recuperabilidad de la base de datos ante un fallo catastrófico.
 #  #   ####### #   # # #     # #     # #   #   #     # 
 #   #  #     # #    ## #     # #     # #    #  #     # 
 #    # #     # #     #  #####   #####  #     # ####### 
-
+```
 ---
 
 *Si encuentras algún error o tienes sugerencias para mejorar este capítulo, por favor [abre un issue](https://github.com/VictorCY19/Curso-Base-de-datos/issues/new) en el repositorio.*
