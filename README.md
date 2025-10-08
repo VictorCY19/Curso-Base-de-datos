@@ -1,6 +1,6 @@
 # 🗃️ Guía de Estudio: Bases de Datos SQL - De Principiante a Avanzado
 
-[![Estado del Curso](https://img.shields.io/badge/Estado-En%20Desarrollo-yellow)](https://github.com/VictorCY19/Curso-Base-de-datos)
+[![Estado del Curso](https://img.shields.io/badge/Estado-Finalizado-green)](https://github.com/VictorCY19/Curso-Base-de-datos)
 
 ## 🤔 ¿Qué es este proyecto?
 
