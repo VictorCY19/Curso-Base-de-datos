@@ -40,6 +40,12 @@ Trabajan con documentos, grafos o pares clave-valor (imagina que tienes una list
 ### 📹 Video guía de instalación:
 [Ver tutorial de instalación](https://www.youtube.com/watch?v=lBvBSWO9kn4)
 
+En los enlaces de la descripcion del video ha cambiado la interfaz por lo que te dejo algunos comentarios para que puedas seguir el video: 
+- Selecciona la version SQL SERVER DEVELOPER, y continua con los pasos del video.
+- Luego en el segundo enlace para descargar el MANAGMENT STUDIO dirigite al punto 2 y selecciona DESCARGAR SSMS 2021 y despues ejecuta.
+- una vez instalado y ejecutado selecciona las opciones que creas conveniente que vayas a usar (mas adelante si las fueras a necesitar puedes instalarlo despues)
+- Finalmente le das a instalar y ya puedes abrir tu SQL SERVER MANAGMENTN STUDIO para empezar a usar SQL.
+
 ## **Conectarse al servidor y crear una base de datos inicial**
 
 Una vez entramos al SQL Server Management Studio, haremos la creación de nuestra primera base de datos.
