@@ -210,7 +210,7 @@ Crea una tabla para gestionar productos de una tienda con los siguientes campos:
 
 ### Ejercicio 3: Experimentar con consultas
 Prueba diferentes consultas SELECT usando:
-- Renombrado de columnas con AS
+- Renombrado de columnas con AS y WHERE
 
 ---
 
